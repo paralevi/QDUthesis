@@ -127,7 +127,7 @@
     \vspace{1.2cm}
     \keyword{#1}
 }{
-    \\\textbf{关键词：} \varKeyword
+    \\\textbf{关键词} \varKeyword
     \clearpage
 }
 \newenvironment{abstractEn}[1]{
@@ -137,7 +137,7 @@
     \vspace{1.2cm}
     \keyword{#1}
 }{
-    \\\textbf{Keywords:} \varKeyword
+    \\\textbf{Keywords} \varKeyword
     \clearpage
 }
 
