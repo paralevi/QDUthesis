@@ -1,0 +1,35 @@
+\chapter{格式样例}
+\section{二级标题}
+\subsection{三级标题}
+\subsubsection{四级标题}
+正文。
+
+引用文献\cite{刘海洋2013LATEX}。
+
+插入图片，如图\ref{fig:sample_figure}所示。
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/logo.png}
+\caption{插图样例}
+\label{fig:sample_figure}
+\end{figure*}
+
+插入表格，如表\ref{tab:sample_table}所示。
+\begin{table}[htb]
+\centering
+\caption{表格样例}
+\label{tab:sample_table}
+\begin{tabular}{lcccc}
+\hline
+~~&列1&列2&列3\\
+\hline
+行1 & (1,1) & (1,2) & (1,3)\\
+行2 & (2,1) & (2,2) & (2,3)\\
+\hline
+\end{tabular}
+\end{table}
+
+公式样例：
+\begin{equation}
+sin^2x+cos^2x=1
+\end{equation}

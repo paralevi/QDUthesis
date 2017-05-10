@@ -1,0 +1,18 @@
+% !Mode:: "TeX:UTF-8"
+%% 请使用 XeLaTeX 编译本文.
+% \documentclass[forprint]{QDUBachelor}% 选项 forprint: 交付打印时添加, 避免彩色链接字迹打印偏淡.
+\documentclass{QDUBachelor}
+\begin{document}
+\include{content/cover}
+\declaration
+\include{content/abstr}
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\include{content/chap1}
+\include{content/chap2}
+\include{content/thanks}
+\reference{mainref}
+\end{document}
