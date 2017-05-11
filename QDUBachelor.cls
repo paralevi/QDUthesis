@@ -1,9 +1,9 @@
 %%
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{QDUBachelor}[2017/05/10 1.0 Qingdao University Thesis Template for Bachelor Degree]
+\ProvidesClass{QDUBachelor}[2017/05/11 1.1 Qingdao University Thesis Template for Bachelor Degree]
 
 %twoside -双面 openany -新章节可在偶数页开始
-\LoadClass[winfonts,openany,zihao=-4,UTF8]{ctexbook}
+\LoadClass[winfonts,twoside,openany,zihao=-4,UTF8]{ctexbook}
 
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -12,30 +12,32 @@
 \DeclareOption{forprint}{\printtrue}
 \ProcessOptions
 %------------------------ Packages ------------------------
-\RequirePackage{fancyhdr}
-\RequirePackage{titlesec}
-\RequirePackage{amsmath}
-\RequirePackage[a4paper,centering,left=2.5cm,right=2cm,top=2cm,bottom=2cm]{geometry} %页面设置
-\RequirePackage{hyperref}
+\RequirePackage{hyperref} %PDF链接设置
 \hypersetup{pdfencoding=auto} 
  \ifprint
  \hypersetup{colorlinks,linkcolor=black,anchorcolor=black,citecolor=black}
  \else
 \hypersetup{colorlinks,linkcolor=blue,anchorcolor=green,citecolor=magenta}
 \fi
+
+\RequirePackage{fancyhdr}
+\RequirePackage[a4paper,centering,left=2.5cm,right=2cm,top=2cm,bottom=2cm]{geometry} %页面设置
+
+%\RequirePackage{wallpaper} %用于封面元素对齐
 \RequirePackage{makecell}
-\RequirePackage{graphicx}
-%\RequirePackage{wallpaper}
-\RequirePackage[font=small,labelfont=bf]{caption}
-\RequirePackage{subfigure}
-\RequirePackage{floatrow}
+\RequirePackage{array} %绘制封面下划线
+\RequirePackage{titlesec} %标题格式设置
+\RequirePackage{tikz} %绘图
+\RequirePackage{amsmath} %数学公式
+\RequirePackage{graphicx} %插图环境
+\RequirePackage[font=small,labelfont=bf]{caption} %图片标题小号加粗
+\RequirePackage{subfigure} %并排图片
+\RequirePackage{diagbox} %绘制斜线表头
+\RequirePackage{floatrow} %表格标题五号置顶
 \DeclareFloatFont{tblfont}{\zihao{5}}
 \floatsetup[table]{font=tblfont,capposition=top}
-\RequirePackage{array}
-\RequirePackage{fontspec}
-\RequirePackage{diagbox}
-\RequirePackage{tikz}
-\RequirePackage[super,square]{natbib}
+\RequirePackage[super,square]{natbib} %引用格式设置为上标方括号
+
 %head&foot setting
 \pagestyle{fancy}
 \lhead{}
@@ -46,6 +48,7 @@
 \rfoot{}
 
 %chapter&section setting
+\renewcommand{\contentsname}{目\quad{}录}
 \setcounter{secnumdepth}{3}
 \ctexset { chapter = { format+={\zihao {3}},beforeskip=1cm } } 
 \ctexset { section = { format+={\raggedright \zihao {-3}} } }
@@ -55,6 +58,7 @@
 %font setting
 \RequirePackage{xeCJK}
 \RequirePackage{fontspec}
+%\setmainfont{Times New Roman}
 \setCJKfamilyfont{xbsong}{FZXiaoBiaoSong-B05S}
 \newcommand{\xbsong}{\CJKfamily{xbsong}}
 
@@ -65,8 +69,41 @@
 \newtoks\major %专业
 \newtoks\name %姓名
 \newtoks\supervisor %指导教师
-\newtoks\date
+\newtoks\date %封面日期
 
+\RequirePackage{listings} %代码样式
+% \definecolor{gray}{rgb}{0.5,0.5,0.5}
+\lstset{ 
+  tabsize=4, %
+  frame=single, %把代码用带有阴影的框圈起来
+  %commentstyle=\color{gray}, %浅灰色的注释
+  %rulesepcolor=\color{red!20!green!20!blue!20}, %代码块边框为淡青色
+  %keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色，粗体
+  keywordstyle=\bfseries,
+  showstringspaces=false,%不显示代码字符串中间的空格标记
+  keepspaces=true, %
+  breakindent=22pt, %
+  numbers=left,%左侧显示行号
+  stepnumber=1,%
+  numberstyle=\tiny, %行号字体用小号
+  basicstyle=\footnotesize, %
+  showspaces=false, %
+  flexiblecolumns=true, %
+  breaklines=true, %对过长的代码自动换行
+  breakautoindent=true,%
+  breakindent=4em, %
+  escapechar=`,
+  escapebegin=\begin{CJK*}{GBK}{hei},escapeend=\end{CJK*},
+  aboveskip=1em, %代码块边框
+  %% added by http://bbs.ctex.org/viewthread.php?tid=53451
+  fontadjust,
+  captionpos=t,
+  framextopmargin=2pt,framexbottommargin=2pt,abovecaptionskip=-3pt,belowcaptionskip=3pt,
+  xleftmargin=4em,xrightmargin=4em, % 设定listing左右的空白
+  % 设定中文冲突，断行，列模式，数学环境输入，listing数字的样式
+  extendedchars=false,columns=flexible
+  % numbersep=-1em
+}
 %------------------------ cover ------------------------
 \def\maketitle {
     \begin{titlepage}
@@ -99,11 +136,11 @@
     ~~\vfill
     \heiti \zihao{2}{\the\title}\\
     \heiti \zihao{2}{\the\titleEn}
-    \end{center}
     ~~\vfill
+    \end{center}
 }
 
-%------------------------declaration------------------------
+%------------------------ declaration ------------------------
 \def\declaration {
     \clearpage
     \thispagestyle{empty}
@@ -147,6 +184,13 @@
     \addcontentsline{toc}{chapter}{谢辞} 
 }{\clearpage}
 
+%------------------------ appendix ------------------------
+\renewenvironment{appendix}{
+    \clearpage
+    \chapter*{附\quad{}录}
+    \addcontentsline{toc}{chapter}{附录} 
+}{\clearpage}
+
 %------------------------ reference ------------------------
 \newcommand{\reference}[1] {
     \nocite{*}
@@ -155,4 +199,4 @@
     \addcontentsline{toc}{chapter}{参考文献}
     \kaishu
     \bibliography{#1}
-}{}
+}
