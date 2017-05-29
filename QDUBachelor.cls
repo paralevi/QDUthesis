@@ -39,13 +39,30 @@
 \RequirePackage[super,square]{natbib} %引用格式设置为上标方括号
 
 %head&foot setting
-\pagestyle{fancy}
-\lhead{}
+\makeatletter
+\newcommand*{\emptystyles}{%
+\let\oldplain\ps@plain
+\let\ps@plain\ps@emptynumbering
+\pagestyle{plain}}
+
+\newcommand*{\restorestyles}{%
+\clearpage\thispagestyle{empty}
+\let\ps@plain\oldplain
+\pagestyle{plain}}
+\makeatother
+
+\fancypagestyle{plain}{%
+\fancyhf{}
 \chead{\zihao{5} 青岛大学本科毕业论文（设计）}
-\rhead{}
-\lfoot{}
 \cfoot{\zihao{5}\thepage}
-\rfoot{}
+\renewcommand\headrulewidth{0.4pt}
+}
+
+\fancypagestyle{emptynumbering}{%
+\fancyhf{}
+\cfoot{\zihao{5}\thepage}
+\renewcommand\headrulewidth{0pt}
+}
 
 %chapter&section setting
 \renewcommand{\contentsname}{目\quad{}录}
@@ -115,7 +132,7 @@
     \centerline{\xbsong \zihao{-0}{本科毕业论文(设计)}}
     \vspace{180pt}
     \centerline {
-        \begin{tabular}{ b{2.5cm} >{\centering\arraybackslash}b{8cm}}
+        \begin{tabular}{ b{2.5cm} >{\arraybackslash}b{8cm}}
             \fangsong \zihao{-3} \ziju{2} \textbf{题目：} & {\heiti \zihao{-3} \the\title} \\[-2pt]
             \Xcline{2-2}{1pt} \\[0.1cm]
             \fangsong \zihao{-3} \ziju{2} \textbf{学院：} & {\heiti \zihao{-3} \the\school} \\[-2pt]
