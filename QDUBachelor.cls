@@ -1,6 +1,6 @@
 %%
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{QDUBachelor}[2017/05/11 1.1 Qingdao University Thesis Template for Bachelor Degree]
+\ProvidesClass{QDUBachelor}[2017/05/29 1.1.1 Qingdao University Thesis Template for Bachelor Degree]
 
 %twoside -双面 openany -新章节可在偶数页开始
 \LoadClass[winfonts,twoside,openany,zihao=-4,UTF8]{ctexbook}
