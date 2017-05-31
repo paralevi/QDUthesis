@@ -1,6 +1,6 @@
 %%
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{QDUBachelor}[2017/05/29 1.1.1 Qingdao University Thesis Template for Bachelor Degree]
+\ProvidesClass{QDUBachelor}[2017/05/31 1.2 Qingdao University Thesis Template for Bachelor Degree]
 
 %twoside -双面 openany -新章节可在偶数页开始
 \LoadClass[winfonts,twoside,openany,zihao=-4,UTF8]{ctexbook}
@@ -21,16 +21,16 @@
 \fi
 
 \RequirePackage{fancyhdr}
-\RequirePackage[a4paper,centering,left=2.5cm,right=2cm,top=2cm,bottom=2cm]{geometry} %页面设置
-
+\RequirePackage[a4paper,centering,left=2.5cm,right=2cm,top=2cm,bottom=2cm,includehead,includefoot]{geometry} %页面设置
 %\RequirePackage{wallpaper} %用于封面元素对齐
 \RequirePackage{makecell}
 \RequirePackage{array} %绘制封面下划线
-\RequirePackage{titlesec} %标题格式设置
+\RequirePackage{titlesec} %标题样式设置
+\RequirePackage[subfigure]{tocloft} %目录样式设置
 \RequirePackage{tikz} %绘图
 \RequirePackage{amsmath} %数学公式
 \RequirePackage{graphicx} %插图环境
-\RequirePackage[font=small,labelfont=bf]{caption} %图片标题小号加粗
+\RequirePackage[font=small,labelfont=bf,labelsep=space]{caption} %图片标题小号加粗
 \RequirePackage{subfigure} %并排图片
 \RequirePackage{diagbox} %绘制斜线表头
 \RequirePackage{floatrow} %表格标题五号置顶
@@ -65,9 +65,10 @@
 }
 
 %chapter&section setting
-\renewcommand{\contentsname}{目\quad{}录}
+\renewcommand{\contentsname}{\hspace*{\fill}\zihao{3} 目\quad{}录\hspace*{\fill}}
 \setcounter{secnumdepth}{3}
-\ctexset { chapter = { format+={\zihao {3}},beforeskip=1cm } } 
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\ctexset { chapter = { format+={\zihao {3}},beforeskip=0em,afterskip=1em} } 
 \ctexset { section = { format+={\raggedright \zihao {-3}} } }
 \ctexset { subsection = { format+={\zihao {4}} } }
 \ctexset { subsubsection = { indent={1pc},number={(\arabic {subsubsection})} } }
@@ -126,7 +127,7 @@
     \begin{titlepage}
     \thispagestyle{empty}
     %\CenterWallPaper{1}{temp.pdf}
-    \vspace*{70pt}
+    \vspace*{40pt}
     \centerline{\includegraphics[height=3.02cm,width=11cm]{figures/logo} }
     \vspace{75pt}
     \centerline{\xbsong \zihao{-0}{本科毕业论文(设计)}}
