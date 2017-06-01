@@ -1,6 +1,6 @@
 %%
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
-\ProvidesClass{QDUBachelor}[2017/05/31 1.2 Qingdao University Thesis Template for Bachelor Degree]
+\ProvidesClass{QDUBachelor}[2017/06/01 1.2.1 Qingdao University Thesis Template for Bachelor Degree]
 
 %twoside -双面 openany -新章节可在偶数页开始
 \LoadClass[winfonts,twoside,openany,zihao=-4,UTF8]{ctexbook}
@@ -68,6 +68,7 @@
 \renewcommand{\contentsname}{\hspace*{\fill}\zihao{3} 目\quad{}录\hspace*{\fill}}
 \setcounter{secnumdepth}{3}
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\setlength\cftbeforetoctitleskip{0em}
 \ctexset { chapter = { format+={\zihao {3}},beforeskip=0em,afterskip=1em} } 
 \ctexset { section = { format+={\raggedright \zihao {-3}} } }
 \ctexset { subsection = { format+={\zihao {4}} } }
