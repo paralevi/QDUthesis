@@ -78,7 +78,7 @@
 \RequirePackage{xeCJK}
 \RequirePackage{fontspec}
 %\setmainfont{Times New Roman}
-\setCJKfamilyfont{xbsong}{FZXiaoBiaoSong-B05S}
+\setCJKfamilyfont{xbsong}{FZXiaoBiaoSong}
 \newcommand{\xbsong}{\CJKfamily{xbsong}}
 
 %parameter
