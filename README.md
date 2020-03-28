@@ -4,6 +4,7 @@ LaTeX Template for Qingdao University Bachelor Degree Thesis (Design)
 本模板严格遵循《青岛大学本科毕业论文（设计）基本规范要求》的格式，基于`texlive 2016`及其包含的`CTeX`宏包编写。编译时需要执行四次编译，即`xelatex + bibtex + xelatex + xelatex`， 可生成带有完整目录和参考文献信息的PDF文档。
 
 **使用前需安装方正小标宋字体。**
+类Unix系统安装字体后，建议通过检验命令`fc-list|grep FZXiaoBiaoSong`确认生效。如有必要，可使用`fc-cache -fv`强制刷新字体缓存。感谢[@9527567](https://github.com/9527567)反馈。
 
 当前版本为1.2.1，还将继续维护。
 
